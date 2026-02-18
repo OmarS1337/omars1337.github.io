@@ -3,133 +3,628 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific Report</title>
+    <title>Sports Market Research - Mathematical Strategies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary: #0a4d3c;
+            --accent: #f4a261;
+            --bg: #fafaf8;
+            --text: #1a1a1a;
+            --card-bg: #ffffff;
+            --border: #d4d4d4;
+            --highlight: #e9f5f0;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            font-size: 19px;
         }
 
         header {
-            background-color: #005f73;
+            background: linear-gradient(135deg, var(--primary) 0%, #064032 100%);
             color: white;
-            padding: 20px;
+            padding: 3.5rem 2rem 3rem;
             text-align: center;
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-style: italic;
         }
 
         nav {
-            background-color: #0a9396;
-            padding: 10px 20px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         nav ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
             display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
         }
 
-        nav ul li {
-            margin-right: 20px;
-        }
-
-        nav ul li a {
-            color: white;
+        nav a {
+            font-family: 'Space Mono', monospace;
             text-decoration: none;
-            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
         }
 
         main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
         }
 
-        main h2 {
-            color: #005f73;
-            border-bottom: 2px solid #0a9396;
-            padding-bottom: 10px;
+        h2 {
+            font-family: 'Space Mono', monospace;
+            color: var(--primary);
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-family: 'Space Mono', monospace;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 2.5rem 0 1rem;
+            font-weight: 700;
         }
 
         .article {
-            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--accent);
         }
 
-        .article h3 {
-            color: #0a9396;
+        p {
+            margin-bottom: 1.3rem;
+            text-align: justify;
         }
 
-        .article p {
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 2rem auto;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .strategy-card {
+            background: var(--highlight);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategy-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .strategy-card h4 {
+            font-family: 'Space Mono', monospace;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .formula-box {
+            background: #f8f8f8;
+            border: 1px dashed var(--border);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .highlight-box {
+            background: linear-gradient(120deg, #fff5e6 0%, #ffe8cc 100%);
+            border-left: 5px solid var(--accent);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        ul.strategy-list {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        ul.strategy-list li {
+            margin-bottom: 0.8rem;
             line-height: 1.6;
         }
 
-        .article img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 10px;
+        .example-box {
+            background: #f0f9f4;
+            border: 2px solid #d1f0e1;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 6px;
         }
 
-        footer {
-            background-color: #005f73;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+        .example-box h5 {
+            font-family: 'Space Mono', monospace;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
         }
 
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .article {
+                padding: 1.5rem;
+            }
+        }
+
+        .toc {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .toc ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .toc a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .toc a:hover {
+            color: var(--accent);
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Sports Market Research</h1>
-        <p>Expected Value and Risk Managment</p>
+        <p>Expected Value and Risk Management</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#">Go to About Section</a></li>
-            <li><a href="#">Articles</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#ev-basics">EV Basics</a></li>
+            <li><a href="#strategies">Strategies</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <main>
-        <h2>Expected Value and Sportsbooks</h2>
+        <h2 id="ev-basics">Expected Value and Sportsbooks</h2>
 
         <div class="article">
             <h3>Two types of Sportsbooks</h3>
-            <p>Daily Fantasy Sportsbook vs Traditional Sportsbooks. </p>
-            <img src="https://via.placeholder.com/800x400" alt="Nature Research">
+            <p>Sports betting has exploded in popularity over the past few years, but like all forms of gambling, the odds are stacked against the bettor. This naturally raises questions such as: Why are the odds against me, and is it possible to beat the sportsbook despite this disadvantage?</p>
+            
+            <p>So lets explore one of the most popular sports betting platform that is legal in my state; Prizepicks. Currently Prizepicks has too tabs Teams and players, for now we will just consider the players tab. In the players section there are two options power and flex we will explore power first</p>
+            
+            <p>There are several different power options 2, 3, 4, 5, and 6. This works by picking over or under on a players stat projection and if you get them ALL correct you win, payouts are based on the number of different picks you make 2 - 6.</p>
+            
+            <p>Lets start with a 2 man power and look at the expected value.</p>
+            <img src="Images/E.png" alt="Expected Value Formula">
+            
+            <p>We will consider a 1$ bet, If you get both correct you get 3$, so 2$ in profit</p>
+            <img src="Images/2manex.png" alt="2-man example">
+            <img src="Images/2manr.png" alt="2-man results">
+            
+            <p>To figure out how we can write an expected value function, lets consider that I can choose the correct More or Less pick 50% of the time</p>
+            <img src="Images/p.png" alt="Probability calculation">
+            
+            <p>To generalize our expected value will consider the whole range of possibilites for x where x repersents probability of choosing more or less correctly</p>
+            <img src="Images/ex.png" alt="Expected value formula">
+            
+            <p>The x^2 term is probability of choosing correctly on both options, the 1-x^2 term is the probability of choosing incorrectly for both, and the 1-x * x terms are the probability of choosing 1 wrong and 1 correct. We can follow this process for the 3 - 6 leg plays, but we will generalize some terms so that we dont have to write to much. This situation we care about number of succes and fails, two success and we get the the payout anything else and we lose, this is a perfect oppurtunity to use the binomial disribution</p>
+            
+            <img src="Images/payoutspower.png" alt="Power payouts">
+            
+            <p>Here are the payouts, we can create an expected value equation in the same process we did with the 2 man</p>
+            <img src="Images/graph.png" alt="Expected value graph">
+            
+            <p>Sadly there is no quadratic equation to find the zeros of these functions, so I used a numerical root finding method to get the following zeros 0.55032, 0.56234, 0.54928, 0.54659, for 3 - man to 6 - man respectively</p>
+            
+            <p>The next topic we will address is the Flex mode instead of power. The only difference is in Flex you can still get a payout if you only get a couple of the entries wrong, we can create the expected value function the same way we did for the power entries</p>
+            
+            <img src="Images/graph2.png" alt="Flex mode graph">
+            
+            <p>The roots are as follows 0.59094, 0.5689, 0.54253, 0.54206 respectively.</p>
+
+            <h3>Understanding Odds Formats</h3>
+            
+            <p>Lets switch gears to talk about the other kind of bets, with odds given to us that will determine the payouts. these odds are presented in the following ways</p>
+            
+            <img src="Images/odds.png" alt="Odds formats">
+            
+            <p>There are three main odds formats—decimal, fractional, and moneyline (American)—and they all show the same thing in different ways: potential payout and implied probability. Decimal odds show the total return for every 1 unit staked (including your stake), so odds of 2.50 mean you get 2.50 back for each 1 wagered. Fractional odds show profit relative to your stake, so 3/2 means you win 3 units for every 2 staked (plus your stake back). Moneyline odds use positive and negative numbers: positive odds (like +150) show how much profit you'd make on a 100 stake, while negative odds (like −200) show how much you need to stake to win 100.</p>
+            
+            <p>To convert from decimal odds to implied probability is as simple as dividing 1 by the decimal value, e.g. decimal odds of 2 = (1/2) = 0.50</p>
+            
+            <p>To convert fractional odds; 1 divided by (the fractional odds plus 1), e.g. fractional odds of 3/1 = (1 / ((3/1) + 1)) = 0.25</p>
+            
+            <p>For American first consider positive, 100 divided by (the american odds plus 100), e.g. american odds of 150 = (100 / (150 + 100)) = 0.40</p>
+            
+            <p>For negative values, Firstly multiply the american odds by -1 and use the positive value in the following formula: american odds divided by (the american odds plus 100), e.g. american odds of -300 = (300/(300+100)) = 0.75</p>
+        </div>
+
+        <h2 id="strategies">Mathematical Strategies for Positive Expected Value</h2>
+
+        <div class="toc">
+            <h3>Strategies Overview</h3>
+            <ul>
+                <li><a href="#value-betting">1. Value Betting: Finding Market Inefficiencies</a></li>
+                <li><a href="#arbitrage">2. Arbitrage Betting (Sure Betting)</a></li>
+                <li><a href="#kelly-criterion">3. Kelly Criterion: Optimal Bet Sizing</a></li>
+                <li><a href="#statistical-modeling">4. Statistical Modeling and Predictive Analytics</a></li>
+                <li><a href="#line-shopping">5. Line Shopping and Odds Comparison</a></li>
+                <li><a href="#closing-line-value">6. Closing Line Value (CLV) Analysis</a></li>
+            </ul>
         </div>
 
         <div class="article">
-            <h3>Climate Change Impacts</h3>
-            <p>Fusce congue turpis vitae augue ullamcorper, non dictum felis viverra. Integer aliquet nunc a fermentum malesuada.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Climate Research">
+            <h3 id="value-betting">1. Value Betting: Finding Market Inefficiencies</h3>
+            
+            <p>Value betting is the cornerstone of profitable sports betting. A bet has positive expected value when your estimated probability of an outcome is higher than the implied probability reflected in the odds.</p>
+
+            <div class="formula-box">
+                Expected Value (EV) = (Probability of Winning × Amount Won) - (Probability of Losing × Amount Lost)
+                <br><br>
+                EV = (P × W) - ((1-P) × L)
+                <br><br>
+                Where:<br>
+                P = True probability of winning<br>
+                W = Amount won per dollar bet<br>
+                L = Amount lost (typically 1 for a $1 bet)
+            </div>
+
+            <div class="strategy-card">
+                <h4>How to Find Value Bets</h4>
+                <ul class="strategy-list">
+                    <li><strong>Calculate True Probability:</strong> Use historical data, advanced metrics, and statistical models to estimate the actual probability of an outcome</li>
+                    <li><strong>Convert Odds to Implied Probability:</strong> Use the formulas from the previous section</li>
+                    <li><strong>Compare:</strong> If your true probability > implied probability, you have found value</li>
+                    <li><strong>Calculate EV:</strong> Determine if the bet is profitable long-term</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Example: NBA Game Value Bet</h5>
+                <p>Sportsbook offers Lakers at +200 (American odds) to win</p>
+                <p><strong>Implied Probability:</strong> 100 / (200 + 100) = 0.333 or 33.3%</p>
+                <p><strong>Your Analysis:</strong> Based on advanced metrics, you estimate Lakers have a 40% chance to win</p>
+                <p><strong>EV Calculation:</strong> EV = (0.40 × $2) - (0.60 × $1) = $0.80 - $0.60 = <strong>+$0.20</strong></p>
+                <p><strong>Conclusion:</strong> This bet has positive expected value of $0.20 per $1 wagered</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Key Insight:</strong> Even with positive EV, variance means you won't win every bet. The strategy works over hundreds or thousands of bets, not individual wagers. This requires proper bankroll management.
+            </div>
+        </div>
+
+        <div class="article">
+            <h3 id="arbitrage">2. Arbitrage Betting (Sure Betting)</h3>
+            
+            <p>Arbitrage betting involves placing bets on all possible outcomes of an event across different sportsbooks to guarantee a profit regardless of the result. This exploits differences in odds between bookmakers.</p>
+
+            <div class="formula-box">
+                Arbitrage Formula:
+                <br><br>
+                (1 / Decimal Odds A) + (1 / Decimal Odds B) < 1
+                <br><br>
+                If the sum is less than 1, an arbitrage opportunity exists
+                <br><br>
+                Profit Percentage = (1 - Sum) × 100%
+            </div>
+
+            <div class="strategy-card">
+                <h4>Arbitrage Implementation Steps</h4>
+                <ul class="strategy-list">
+                    <li><strong>Find Discrepancies:</strong> Compare odds across multiple sportsbooks for the same event</li>
+                    <li><strong>Calculate Arbitrage:</strong> Use the formula to verify opportunity exists</li>
+                    <li><strong>Determine Stake Distribution:</strong> Calculate how much to bet on each outcome</li>
+                    <li><strong>Execute Quickly:</strong> Place bets simultaneously before odds change</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Example: Tennis Match Arbitrage</h5>
+                <p><strong>Bookmaker A:</strong> Player 1 at 2.10 (Decimal)</p>
+                <p><strong>Bookmaker B:</strong> Player 2 at 2.05 (Decimal)</p>
+                <p><strong>Check for Arbitrage:</strong> (1/2.10) + (1/2.05) = 0.476 + 0.488 = 0.964 < 1 ✓</p>
+                <p><strong>Profit Margin:</strong> (1 - 0.964) × 100 = 3.6%</p>
+                <p><strong>For $1000 total stake:</strong></p>
+                <p>Bet on Player 1: $1000 × (0.476/0.964) = $493.78</p>
+                <p>Bet on Player 2: $1000 × (0.488/0.964) = $506.22</p>
+                <p><strong>Guaranteed Profit:</strong> ~$36 regardless of outcome</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Challenges:</strong> Arbitrage opportunities are rare and short-lived. Bookmakers may limit or ban accounts that consistently arb. Transaction costs and bet limits can reduce profitability.
+            </div>
+        </div>
+
+        <div class="article">
+            <h3 id="kelly-criterion">3. Kelly Criterion: Optimal Bet Sizing</h3>
+            
+            <p>The Kelly Criterion is a mathematical formula that determines the optimal size of a bet to maximize long-term growth while minimizing risk of ruin. It's essential for bankroll management when you have an edge.</p>
+
+            <div class="formula-box">
+                Kelly Criterion Formula:
+                <br><br>
+                f* = (bp - q) / b
+                <br><br>
+                Where:<br>
+                f* = Fraction of bankroll to wager<br>
+                b = Decimal odds - 1 (net odds received)<br>
+                p = Probability of winning<br>
+                q = Probability of losing (1 - p)
+                <br><br>
+                For American odds: b = (Odds/100) if positive, or (100/|Odds|) if negative
+            </div>
+
+            <div class="strategy-card">
+                <h4>Kelly Criterion Advantages</h4>
+                <ul class="strategy-list">
+                    <li><strong>Optimal Growth:</strong> Maximizes long-term logarithmic growth of bankroll</li>
+                    <li><strong>Risk Management:</strong> Prevents overbetting and risk of ruin</li>
+                    <li><strong>Scales with Edge:</strong> Bet size increases with your advantage</li>
+                    <li><strong>Adaptive:</strong> Automatically adjusts to changing bankroll size</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Example: Kelly Calculation</h5>
+                <p><strong>Scenario:</strong> You estimate 55% chance of winning, odds are +110 (2.10 decimal)</p>
+                <p><strong>Variables:</strong></p>
+                <p>p = 0.55</p>
+                <p>q = 0.45</p>
+                <p>b = 1.10 (decimal odds - 1)</p>
+                <p><strong>Calculation:</strong></p>
+                <p>f* = ((1.10 × 0.55) - 0.45) / 1.10</p>
+                <p>f* = (0.605 - 0.45) / 1.10 = 0.141</p>
+                <p><strong>Result:</strong> Bet 14.1% of your bankroll</p>
+                <p>If bankroll = $1000, bet $141</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Fractional Kelly:</strong> Many professional bettors use "Half Kelly" (f*/2) or "Quarter Kelly" (f*/4) to reduce variance while still achieving substantial growth. This is more conservative and accounts for uncertainty in probability estimates.
+            </div>
+        </div>
+
+        <div class="article">
+            <h3 id="statistical-modeling">4. Statistical Modeling and Predictive Analytics</h3>
+            
+            <p>Building sophisticated statistical models can give you an edge by more accurately predicting outcomes than the market. This involves quantitative analysis using historical data, player statistics, and advanced metrics.</p>
+
+            <div class="strategy-card">
+                <h4>Common Modeling Approaches</h4>
+                <ul class="strategy-list">
+                    <li><strong>Regression Models:</strong> Linear, logistic, or Poisson regression to predict scores or win probability</li>
+                    <li><strong>Machine Learning:</strong> Random forests, neural networks, gradient boosting for pattern recognition</li>
+                    <li><strong>Elo Ratings:</strong> Dynamic rating system that updates based on game results</li>
+                    <li><strong>Monte Carlo Simulation:</strong> Run thousands of simulations to estimate probability distributions</li>
+                    <li><strong>Bayesian Methods:</strong> Incorporate prior knowledge and update with new information</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Example: Simple Poisson Model for Soccer</h5>
+                <p><strong>Step 1:</strong> Calculate average goals scored/conceded for each team</p>
+                <p>Team A: 1.8 goals/game (attack), 1.1 goals conceded/game (defense)</p>
+                <p>Team B: 1.5 goals/game (attack), 1.3 goals conceded/game (defense)</p>
+                <p><strong>Step 2:</strong> Adjust for opponent strength</p>
+                <p>Expected goals for Team A = 1.8 × (1.3 / league_avg_defense)</p>
+                <p>Expected goals for Team B = 1.5 × (1.1 / league_avg_defense)</p>
+                <p><strong>Step 3:</strong> Use Poisson distribution to calculate probability of each scoreline</p>
+                <p><strong>Step 4:</strong> Compare your probabilities to bookmaker odds to find value</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Data Sources:</strong> Successful models require comprehensive data including: team/player stats, injuries, weather, historical matchups, travel schedules, rest days, and situational factors. Quality of data is as important as model sophistication.
+            </div>
+        </div>
+
+        <div class="article">
+            <h3 id="line-shopping">5. Line Shopping and Odds Comparison</h3>
+            
+            <p>Line shopping means comparing odds across multiple sportsbooks to find the best price for your bet. Even small differences in odds significantly impact long-term profitability.</p>
+
+            <div class="formula-box">
+                Long-term Profit Impact:
+                <br><br>
+                Extra Profit = (Better Odds - Worse Odds) × Number of Bets × Average Stake
+                <br><br>
+                Over 1000 bets of $100, a 0.05 decimal odds improvement = $5,000 extra profit
+            </div>
+
+            <div class="strategy-card">
+                <h4>Line Shopping Best Practices</h4>
+                <ul class="strategy-list">
+                    <li><strong>Multiple Accounts:</strong> Maintain accounts at 5-10 different sportsbooks</li>
+                    <li><strong>Odds Aggregators:</strong> Use comparison tools to quickly identify best lines</li>
+                    <li><strong>Timing:</strong> Monitor line movements and bet when odds are most favorable</li>
+                    <li><strong>Reduced Vig:</strong> Some books offer lower margins on certain markets</li>
+                    <li><strong>Promotions:</strong> Utilize sign-up bonuses and reduced juice offers strategically</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Example: Impact of Line Shopping</h5>
+                <p><strong>Same bet across three books:</strong></p>
+                <p>Book A: +105 (2.05 decimal)</p>
+                <p>Book B: +110 (2.10 decimal)</p>
+                <p>Book C: +115 (2.15 decimal)</p>
+                <p><strong>$100 bet winning scenario:</strong></p>
+                <p>Book A profit: $105</p>
+                <p>Book B profit: $110</p>
+                <p>Book C profit: $115</p>
+                <p><strong>Over 100 winning bets:</strong> Choosing Book C over Book A = $1,000 extra profit</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>ROI Boost:</strong> Line shopping effectively increases your win rate without improving your handicapping. Professional bettors consider this essential, not optional. The difference between +105 and +110 might seem small, but represents a 4.8% increase in returns.
+            </div>
+        </div>
+
+        <div class="article">
+            <h3 id="closing-line-value">6. Closing Line Value (CLV) Analysis</h3>
+            
+            <p>Closing Line Value measures whether you beat the market by comparing your bet's odds to the closing line (final odds before event starts). Consistently beating the closing line is the strongest predictor of long-term profitability.</p>
+
+            <div class="formula-box">
+                CLV Calculation:
+                <br><br>
+                CLV% = ((Your Decimal Odds / Closing Decimal Odds) - 1) × 100
+                <br><br>
+                Positive CLV = You got better odds than the closing line
+                <br><br>
+                Example: Bet at 2.10, closes at 1.90
+                CLV% = ((2.10 / 1.90) - 1) × 100 = 10.5% CLV
+            </div>
+
+            <div class="strategy-card">
+                <h4>Why CLV Matters</h4>
+                <ul class="strategy-list">
+                    <li><strong>Market Efficiency:</strong> Closing lines are the most efficient (accurate) because they incorporate the most information</li>
+                    <li><strong>Performance Metric:</strong> Track CLV instead of short-term win/loss record</li>
+                    <li><strong>Validation:</strong> Positive CLV proves your analysis beats the market consensus</li>
+                    <li><strong>Long-term Indicator:</strong> Consistent positive CLV guarantees long-term profitability</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h5>Example: CLV Performance Tracking</h5>
+                <p><strong>Bet 1:</strong> Took +150, closed +130 → CLV = +15.4%</p>
+                <p><strong>Bet 2:</strong> Took -110, closed -120 → CLV = +9.1%</p>
+                <p><strong>Bet 3:</strong> Took +200, closed +220 → CLV = -9.1%</p>
+                <p><strong>Average CLV:</strong> +5.1%</p>
+                <p><strong>Analysis:</strong> Positive average CLV indicates you're finding value. Even losing bets with positive CLV are +EV decisions. Your win rate might be 48%, but with +5% CLV, you're profitable long-term.</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Strategic Timing:</strong> Sharp bettors often bet early (when lines first open) or bet into steam moves (when sharp action moves lines). The goal is always to get better odds than where the market will close. This requires quick decision-making and line monitoring.
+            </div>
+        </div>
+
+        <div class="article">
+            <h3>Combining Strategies for Maximum Edge</h3>
+            
+            <p>The most successful sports bettors don't rely on just one strategy—they combine multiple approaches to create a comprehensive system that maximizes expected value while managing risk.</p>
+
+            <div class="strategy-card">
+                <h4>Integrated Approach</h4>
+                <ul class="strategy-list">
+                    <li><strong>Build Models:</strong> Develop statistical models to estimate true probabilities (Strategy 4)</li>
+                    <li><strong>Find Value:</strong> Compare model outputs to market odds to identify value bets (Strategy 1)</li>
+                    <li><strong>Shop Lines:</strong> Check multiple books for the best available odds (Strategy 5)</li>
+                    <li><strong>Size Appropriately:</strong> Use Kelly Criterion to determine optimal stake (Strategy 3)</li>
+                    <li><strong>Track Performance:</strong> Monitor CLV to validate your edge (Strategy 6)</li>
+                    <li><strong>Exploit Opportunities:</strong> Take arbitrage when available for risk-free profit (Strategy 2)</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <strong>The Reality:</strong> Even with perfect execution of these strategies, expect variance. A 5% edge means long-term profitability, but short-term losing streaks are normal. Bankroll management and emotional discipline are as important as mathematical edge. Most professional bettors achieve ROI between 2-8%, which compounds significantly over time with proper sizing.
+            </div>
+        </div>
+
+        <h2 id="contact">Contact Me</h2>
+        
+        <div class="article">
+            <p>Feel free to reach out through the following channels:</p>
+            <ul class="strategy-list">
+                <li><strong>Email:</strong> <a href="mailto:34omarsafi@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 600;">34omarsafi@gmail.com</a></li>
+                <li><strong>Phone:</strong> (408) 457-4718</li>
+                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/omar-safi-a6957826a/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">My LinkedIn Profile</a></li>
+            </ul>
         </div>
     </main>
-
-    <footer>
-        <p>&copy; Omar Safi</p>
-    </footer>
 </body>
 </html>
